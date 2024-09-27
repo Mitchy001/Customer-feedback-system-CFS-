@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback System</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4a7345eb06.js" crossorigin="anonymous"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <h1 class="logo">F-<span class="tracker">EEDBACK</span></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="add_feedback.html">Add</a></li>
+                    <li><a href="edit_feedback.html">Edit</a></li>
+                    <li><a href="view_feedback.html">View</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="banner home-content-container">
+        <img src="Image/Finance Tracker.jpg" alt="Image">
+        <div class="banner-text">
+            <h2>Welcome to <br><span>Customer Feedback</span><br>System</h2>
+            <p class="para">Unleash the power of your voice with F-eedback,<br>
+                your all-in-one solution for valuable feedback.<br>
+               Share your insights to help us improve with our user-friendly<br>
+               platform designed to enhance your experience.<br>
+            <a href="register.html" class="cta-button btn">JOIN US</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Feedback System. All rights reserved.</p>
+            <p>Reach us at: support@Feedbacksystem.com</p>
+            <p>Phone: 123-456-7890</p>
+            <p>Country: Kenya</p>
+        </div>
+    </footer>
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname){
+            // Remove "active" class from all tab links
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            // Remove "active" class from all tab contents
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            // Add "active" class to the selected tab link
+            document.getElementById(tabname).classList.add("active-link");
+            // Add "active" class to the corresponding tab content
+            document.getElementById(tabname).classList.add("active-tab");
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu(){
+            sidemenu.style.right = "0";
+        }
+        function closemenu(){
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw3lWDPYgWbP9-ESlIRj-bD1LY3ogNNPQUStvqmhgfF4_ninPT5q0QUYJW3Fzdm4lXV/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg= document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000)
+                form.reset()
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
